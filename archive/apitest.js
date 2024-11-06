@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bookContainer.appendChild(description);
             bookList.appendChild(bookContainer);
         });
-  document.body.appendChild(bookList);
+        document.body.appendChild(bookList);
         } catch (error) {
             console.error('Error while fetching data:', error);
             resultDiv.textContent = "An error occurred while fetching data.";
