@@ -1,12 +1,16 @@
-import {fetchBooks} from "./books.js";
+import {fetchBooks} from "./bookAPI.js";
+import Book from "./book.js";
 
 const searchInput = document.getElementById('search-input');
 const bookSection = document.getElementById("books-section");
 const searchOnlineBtn = document.getElementById('search-online-btn');
+const closeOverlayBtn = document.getElementById("close-overlay");
 
+function clearBookSection() {
+    bookSection.innerHTML = "";
+}
 
 async function searchBooks() {
-    bookSection.innerHTML = "";
     const query = searchInput.value.trim();
 
     if (!query) {
@@ -15,26 +19,26 @@ async function searchBooks() {
     }
 
     const booksList = await fetchBooks(query);
-    
+    console.log(booksList);
+    clearBookSection();
+
     // Instantiate book
     booksList.items.forEach((book) => {
-        console.log(book.volumeInfo);
-        const bookContainer = document.createElement("div");
-        bookContainer.className = "book-card";
-
-        const bookThumbnail = document.createElement("img");
-        bookThumbnail.src = book.volumeInfo.imageLinks?.thumbnail || 'book1.jpg';
-        bookThumbnail.alt = book.volumeInfo.title;
-
-        const bookTitle = document.createElement("p");
-        bookTitle.textContent = book.volumeInfo.title;
-
-        bookContainer.appendChild(bookThumbnail);
-        bookContainer.appendChild(bookTitle);
-        bookSection.appendChild(bookContainer);
+        let bookObject = new Book(
+            book.volumeInfo.title,
+            book.volumeInfo.authors,
+            book.volumeInfo.description,
+            book.volumeInfo.publishedDate,
+            book.volumeInfo.pageCount,
+            book.volumeInfo.imageLinks?.thumbnail
+        );
+        bookObject.showBookInDOM();
     });
 }
 
 
 // Event listener for the "Search Online" button
 searchOnlineBtn.addEventListener('click', searchBooks);
+closeOverlayBtn.addEventListener("click", () => {
+    document.getElementById("overlay").style.display = "none";
+})
