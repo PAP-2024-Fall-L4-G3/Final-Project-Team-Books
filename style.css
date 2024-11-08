@@ -69,7 +69,7 @@ header h1 {
 }
 
 
-.books-section {
+#books-section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
