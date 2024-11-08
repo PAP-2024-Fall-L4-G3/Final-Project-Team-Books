@@ -5,12 +5,11 @@ const API_KEY = 'AIzaSyDQ58dHc4Xza5p60pM_CMbzHy0MKYu2y1o';
 book.volumeInfo.imageLinks.thumbnail; <- IMAGE SRC
 book.volumeInfo.description; */
 
-async function fetchBooks(input) {
+export async function fetchBooks(input) {
     const url = `${BOOK_URL}intitle:${input}&key=${API_KEY}`;
-
     try {
         const response = await fetch(url);
-        return await response.json().items;
+        return await response.json();
     } catch (error) {
         console.error('Error while fetching API data: ', error);
     }
