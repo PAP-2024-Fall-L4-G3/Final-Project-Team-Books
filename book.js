@@ -19,10 +19,10 @@ function displayBook(book) {
     // Configure overlay
     currentId = book.id;
     overlayTitle.textContent = book.title;
-    overlayAuthors.textContent = book.authors ? book.authors.join(", ") : "Unknown Author";
+    overlayAuthors.textContent = book.authors ? `Author(s): ${book.authors.join(", ")}` : "Unknown Author";
     overlayDescription.textContent = book.description;
-    overlayPages.textContent = book.pageCount;
-    overlayDate.textContent = book.publishedDate;
+    overlayPages.textContent = `Page Count: ${book.pageCount}`;
+    overlayDate.textContent = `Date Published: ${book.publishedDate}`;
 
     overlayThumbnail.src = book.thumbnail;
     overlayThumbnail.alt = book.title;
