@@ -6,15 +6,12 @@ const searchInput = document.getElementById('search-input');
 const bookSection = document.getElementById("books-section");
 const searchOnlineBtn = document.getElementById('search-online-btn');
 const closeOverlayBtn = document.getElementById("close-overlay");
-let inFavorites = true;
 
 function clearBookSection() {
     bookSection.innerHTML = "";
 }
 
 async function searchBooks(searchBySubject, subject) {
-    inFavorites = false;
-
     let booksList;
     if (searchBySubject === true) {
         booksList = await fetchBooksBySubject(subject);
