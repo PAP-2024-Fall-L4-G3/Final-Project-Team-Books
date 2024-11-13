@@ -1,6 +1,7 @@
-import {fetchBooks} from "./bookAPI.js";
-import {Book, showFavorites} from "./book.js";
+import {fetchBooks, fetchBooksBySubject} from "./bookAPI.js";
+import {Book} from "./book.js";
 
+const category = document.getElementById("category");
 const searchInput = document.getElementById('search-input');
 const bookSection = document.getElementById("books-section");
 const searchOnlineBtn = document.getElementById('search-online-btn');
@@ -11,16 +12,21 @@ function clearBookSection() {
     bookSection.innerHTML = "";
 }
 
-async function searchBooks() {
-    const query = searchInput.value.trim();
+async function searchBooks(searchBySubject, subject) {
+    inFavorites = false;
 
-    if (!query) {
-        console.error("Please enter a book title or author to search.");
-        return;
+    let booksList;
+    if (searchBySubject === true) {
+        booksList = await fetchBooksBySubject(subject);
+    } else {
+        const query = searchInput.value.trim();
+        if (!query) {
+            console.error("Please enter a book title or author to search.");
+            return;
+        }
+        booksList = await fetchBooks(query);
     }
 
-    inFavorites = false;
-    const booksList = await fetchBooks(query);
     console.log(booksList);
     clearBookSection();
 
@@ -41,13 +47,16 @@ async function searchBooks() {
 
 
 // Event listener for the "Search Online" button
-searchOnlineBtn.addEventListener('click', searchBooks);
+searchOnlineBtn.addEventListener('click', () => {
+    searchBooks(false);
+});
 closeOverlayBtn.addEventListener("click", () => {
     document.getElementById("overlay").style.display = "none";
-    if (inFavorites) {
-        clearBookSection();
-        showFavorites();
-    }
 })
 
-showFavorites();
+Array.from(category.children).forEach((button) => {
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+        searchBooks(true, button.dataset.category);
+    })
+})

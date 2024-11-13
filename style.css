@@ -46,7 +46,7 @@ header h1 {
 }
 
 
-.categories {
+#category {
     display: flex;
     justify-content: center;
     gap: 10px;
