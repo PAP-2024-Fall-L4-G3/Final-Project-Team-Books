@@ -1,5 +1,5 @@
 import {fetchBooks, fetchBooksBySubject} from "./bookAPI.js";
-import {Book, showFavorites} from "./book.js";
+import {Book} from "./book.js";
 
 const category = document.getElementById("category");
 const searchInput = document.getElementById('search-input');
@@ -52,10 +52,6 @@ searchOnlineBtn.addEventListener('click', () => {
 });
 closeOverlayBtn.addEventListener("click", () => {
     document.getElementById("overlay").style.display = "none";
-    if (inFavorites) {
-        clearBookSection();
-        showFavorites();
-    }
 })
 
 Array.from(category.children).forEach((button) => {
@@ -64,6 +60,3 @@ Array.from(category.children).forEach((button) => {
         searchBooks(true, button.dataset.category);
     })
 })
-
-
-showFavorites();
