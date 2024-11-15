@@ -20,6 +20,42 @@ header h1 {
     font-size: 2em;
     color: #333;
 }
+/* Navbar */
+.navbar {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+    color: #fff !important;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #e0e0e0 !important;
+}
+
+/* Overlay */
+#close-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#close-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
 /* Search Bar */
 .search-container {
