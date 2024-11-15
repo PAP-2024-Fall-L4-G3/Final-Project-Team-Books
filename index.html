@@ -43,16 +43,21 @@
     </div>
   </nav>
 
-  <div id="overlay">
-    <button id="close-overlay">X</button>
-    <img id="overlay-thumbnail" alt="" src="">
-    <h1 id="overlay-title"></h1>
-    <p id="overlay-date"></p>
-    <p id="overlay-authors"></p>
-    <p id="overlay-pages"></p>
-    <p id="overlay-description"></p>
-    <button id="favorite-button">Favorite</button>
+  <div class="text-center">
+    <div id="overlay">
+      <button id="close-overlay">X</button>
+      <img id="overlay-thumbnail" alt="" src="">
+      <h2 id="overlay-title"></h2>
+      <p class="h4"id="overlay-date"></p>
+      <p class="h4" id="overlay-authors"></p>
+      <p class="h4" id="overlay-pages"></p>
+      <p class="h5" id="overlay-description"></p>
+      <button id="favorite-button">Favorite</button>
+    </div>
   </div>
+
+
+
 
   <div class="container">
     <header>
@@ -61,7 +66,7 @@
 
     <div class="search-container">
       <input type="text" placeholder="Search by book title or author..." id="search-input">
-      <button id="search-online-btn">Search Online</button>
+      <button type="button" class="btn btn-outline-success btn-lg" id="search-online-btn">Search online</button>
     </div>
 
     <div id="category">
@@ -74,7 +79,7 @@
     </div>
 
     <!-- Books Section with Images -->
-    <section id="books-section"></section>
+    <section id="books-section" class="books-section"></section>
   </div>
  
 
